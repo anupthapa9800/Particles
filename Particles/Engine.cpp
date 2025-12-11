@@ -7,10 +7,7 @@ using namespace sf; // Use the SFML namespace globally
 using namespace std;
 
 Engine::Engine() {
-    // Call create on m_Window to populate the RenderWindow member variable
-    // Using desktop mode for custom resolution, though a fixed size could also be used.
-    // E.g., m_Window.create(sf::VideoMode(1920, 1080), "Particles");
-    // Or to use the screen resolution:
+   
     m_Window.create(VideoMode::getDesktopMode(), "Particles"); 
 
     // Note: m_Particles (vector<Particle>) is automatically default-constructed.
@@ -22,7 +19,7 @@ void Engine::run() {
 
     // Unit Tests setup and call (Use the exact code provided) 
     cout << "Starting Particle unit tests..." << endl;
-    // Assuming Particle constructor is accessible and unitTests() exists.
+   
     Particle p(m_Window, 4, { (int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2 });
     p.unitTests();
     cout << "Unit tests complete. Starting engine..." << endl;
@@ -46,34 +43,27 @@ void Engine::run() {
     }
 }
 
-void Engine::input() {
+void Engine::input()
+{
     Event event;
-    // Poll the Windows event queue 
     while (m_Window.pollEvent(event)) {
-        // Handle the Escape key pressed and closed events so your program can exit
+        // Handle closing and Escape key
         if (event.type == Event::Closed ||
             (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape))
         {
             m_Window.close();
         }
 
-        // Handle the left mouse button pressed event 
+        // Handle the left mouse button pressed event
         if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
-            // Get mouse click position
             Vector2i mouseClickPosition(event.mouseButton.x, event.mouseButton.y);
 
-            // Create a loop to construct 5 particles (or an experimental number) 
+            // Create 5 particles
             for (int i = 0; i < 5; ++i) {
-                // Generate a random number of points in the range [25:50] 
-                // Using C++ standard library's random features for better randomness, 
-                // but the assignment might imply C's rand() as used in the Particle constructor's instructions.
-                // Sticking to standard for now, but can switch if needed.
-                random_device rd;
-                mt19937 gen(rd());
-                uniform_int_distribution<> distrib(25, 50); 
-                int numPoints = distrib(gen);
+                // Generate random numPoints in the range [25:50]
+                int numPoints = (rand() % 26) + 25;
 
-                // Construct and add the new particle to the vector 
+                // Construct and add the new particle
                 m_particles.emplace_back(m_Window, numPoints, mouseClickPosition);
             }
         }
@@ -101,7 +91,7 @@ void Engine::update(float dtAsSeconds) {
 }
 
 void Engine::draw() {
-    // clear the window [cite: 161]
+    // clear the window 
     m_Window.clear(sf::Color::Black); // Using black for the background, as shown in the image 
 
     // Loop through each Particle in m_Particles 
@@ -111,6 +101,6 @@ void Engine::draw() {
         m_Window.draw(particle);
     }
 
-    // display the window [cite: 169]
+    // display the window 
     m_Window.display();
 }

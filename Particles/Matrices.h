@@ -16,7 +16,7 @@ namespace Matrices
             ///Initialize each element to 0.
             Matrix(int _rows, int _cols);
 
-            ///************************************
+           
             ///inline accessors / mutators, these are done:
 
             ///Read element at row i, column j
@@ -45,18 +45,18 @@ namespace Matrices
     };
 
     ///Add each corresponding element.
-    ///usage:  c = a + b;
+    /// c = a + b;
     Matrix operator+(const Matrix& a, const Matrix& b);
 
-    ///Matrix multiply.  See description.
-    ///usage:  c = a * b;
+    ///Matrix multiply.  
+    
     Matrix operator*(const Matrix& a, const Matrix& b);
 
-    ///Matrix comparison.  See description.
+    ///Matrix comparison.  
     ///usage:  a == b
     bool operator==(const Matrix& a, const Matrix& b);
 
-    ///Matrix comparison.  See description.
+    ///Matrix comparison.  
     ///usage:  a != b
     bool operator!=(const Matrix& a, const Matrix& b);
 
@@ -64,7 +64,7 @@ namespace Matrices
     ///Separate columns by ' ' and rows by '\n'
     ostream& operator<<(ostream& os, const Matrix& a);
 
-    /*******************************************************************************/
+  
 
     ///2D rotation matrix
     ///usage:  A = R * A rotates A theta radians counter-clockwise
@@ -82,31 +82,22 @@ namespace Matrices
     };
 
     ///2D scaling matrix
-    ///usage:  A = S * A expands or contracts A by the specified scaling factor
+    /// A = S * A expands or contracts A by the specified scaling factor
     class ScalingMatrix : public Matrix
     {
         public:
-            ///Call the parent constructor to create a 2x2 matrix
-            ///Then assign each element as follows:
-            /*
-            scale   0
-            0       scale
-            */
+           
             ///scale represents the size multiplier
             ScalingMatrix(double scale);
     };
 
     ///2D Translation matrix
-    ///usage:  A = T + A will shift all coordinates of A by (xShift, yShift)
+    ///  A = T + A will shift all coordinates of A by (xShift, yShift)
     class TranslationMatrix : public Matrix
     {
         public:
             ///Call the parent constructor to create a 2xn matrix
-            ///Then assign each element as follows:
-            /*
-            xShift  xShift  xShift  ...
-            yShift  yShift  yShift  ...
-            */
+           
             ///paramaters are xShift, yShift, and nCols
             ///nCols represents the number of columns in the matrix
             ///where each column contains one (x,y) coordinate pair
@@ -114,4 +105,4 @@ namespace Matrices
     };
 }
 
-#endif // MATRIX_H_INCLUDED
+#endif 

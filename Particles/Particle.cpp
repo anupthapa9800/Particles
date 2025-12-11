@@ -11,7 +11,7 @@ using namespace std;
 
 Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition)
 // The Matrix member variable m_A must be constructed in an initialization list
-    : m_A(2, numPoints) // m_A(2, numPoints) because we store (x, y) coordinates (2 rows) for numPoints columns 
+    : m_A(2, numPoints) 
 {
     // 1. Initialize Member Variables
     m_ttl = TTL; // Initialize m_ttl with the global constant TTL (5 seconds)
