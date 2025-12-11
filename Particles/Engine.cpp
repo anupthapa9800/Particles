@@ -10,7 +10,7 @@ Engine::Engine() {
    
     m_Window.create(VideoMode::getDesktopMode(), "Particles"); 
 
-    // Note: m_Particles (vector<Particle>) is automatically default-constructed.
+    
 }
 
 void Engine::run() {

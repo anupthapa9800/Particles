@@ -5,9 +5,7 @@
 #include <iostream>
 using namespace sf;
 using namespace std;
-// Global constants from Particle.h 
-// const float TTL = 5.0f; 
- //const double PI = 3.14159265358979323846; 
+
 
 Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition)
 // The Matrix member variable m_A must be constructed in an initialization list
@@ -33,7 +31,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 
         // 4. Initial Velocities (m_vx, m_vy)
         // Assign m_vx and m_vy to random pixel velocities, e.g., between 100 and 500 
-        // Note: The assignment specifies random *pixel* velocities, but these will be treated as units/sec in the update loop.
+        
         float initialSpeed = (float)rand() / RAND_MAX * (500.0f - 100.0f) + 100.0f;
     m_vx = initialSpeed;
     m_vy = initialSpeed;
